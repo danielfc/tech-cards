@@ -8,16 +8,19 @@ Go to your _StudyBlue_ account and create a new folder. Next, got o the option _
 
 ## Examples
 
-### Simple answer
-It maintains a conversational state. **Answer**: _Stateful_
+#### Simple answer
+**Question:** It maintains a conversational state. 
+<br>**Answer**: _Stateful_
 
-### Fill-in-the-blank
-In JMS, there are two types of destinations: \_\_\_\_\_\_\_ and \_\_\_\_\_\_. Answer: _queues, topics_
+#### Fill-in-the-blank
+**Question:** In JMS, there are two types of destinations: \_\_\_\_\_\_\_ and \_\_\_\_\_\_. 
+<br>**Answer:** _queues, topics_
 
-### Yes/no
-Y/N - The <i>window</i> object is visible in node. Answer: _N_
+#### Yes/no
+**Question:** Y/N - The <i>window</i> object is visible in node. 
+<br>**Answer:** _N_
 
-### Image
+#### Image
 
 ![Point-to-point image](http://s16.postimg.org/6wbgfm72t/ptp.png) 
-<br> Answer: _point-to-point_
+<br> **Answer:** _point-to-point_
