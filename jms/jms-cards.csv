@@ -1,0 +1,72 @@
+"The AMQP stands for: ","Advanced Messaging Queue Protocol"
+"The _______ for messaging implements the AMQP and integrates well even with different technologies.","RabbitMQ"
+"What is the name of the component that allows communication between two different applications through messaging?","Message Broker"
+"What is needed from the JCA API to integrate a Java application and RabbitMQ?","Resource adapter"
+"The JCA stands for:","Java Connector Architecture"
+"There are two types of messaging model in JMS","point-to-point, publish/subscribe"
+"JMS defines a vendor-neutral (but Java-specific) set of programming interfaces for interacting with __________ messaging systems.","asynchronous"
+"The whole messaging interchange is a two-step process: where, a component sends a message to a destination, which is in turn retrieved by the recipient with the mediation of the ___ server.","JMS"
+"In JMS, there are two types of destinations: _______ and _______.","queues, topics"
+"In the point-to-point model, messages are sent from producers to consumers via _______.","queues"
+"Y/N - A given queue may have multiple receivers but only one receiver may consume each message.","Y"
+"Y/N - A given queue may have multiple receivers and many receivers may consume each message.","N"
+"A consumer subscription can be durable or ___________.","nondurable"
+"A nondurable subscriber can only receive messages that are published while it is ______. A nondurable subscription does not guarantee the delivery of the message or may deliver the same message more than once.","active"
+"A durable subscription, on the other hand, guarantees that the consumer receives the message exactly ____.","once"
+"Y/N - Even though JMS is inherently asynchronous, the JMS specification allows messages to be consumed in either of the following two ways: asynchronously and synchronously.","Y"
+"With the asynchronous mode, the client must implement the <i>javax.jms.MessageListener</i> interface and overwrite the ________() method.","onMessage"
+"With the synchronous mode, a subscriber or a receiver explicitly fetches the message from the destination by calling the _______() method of any MessageConsumer instance. This method can block until a message arrives or can time out if a message does not arrive within a specified time limit.","receive"
+"Y/N - A JMS message consists of a header, properties, and a body.","Y"
+"Y/N - A JMS message consists of a header and a body.","N"
+"Y/N - The JMS API supports two delivery modes for messages to specify whether or not the messages are lost if the JMS provider fails:  persistent and non-persistent.","Y"
+"Y/N - The persistent delivery mode, which is the default, instructs the JMS provider to take extra care to ensure that a message is not lost in transit in case of a JMS provider failure. A message sent with this delivery mode is logged to stable storage when it is sent.","Y"
+"In the point-to-point (PTP) messaging domain, destinations are called _______; in the publish/subscribe (pub/sub) messaging domain, destinations are called _______.","queues,topics"
+"A ____________ is the component a client uses to specify the target of messages it produces and the source of messages it consumes.","destination"
+"A connection _________ object encapsulates a set of connection configuration parameters that have been defined by an administrator. A client uses it to create a connection with a JMS provider.","factory"
+"A ________ is a single-threaded context for producing and consuming messages. You use them to create message producers, message consumers, and messages. They serialize the execution of message listeners and provide a transactional context with which to group a set of sends and receives into an atomic unit of work.","session"
+"A message ________ is an object created by a session and is used for sending messages to a destination. The PTP form implements the  QueueSender  interface. The pub/sub form implements the  TopicPublisher  interface.","producer"
+"A message _________ is an object created by a session and is used for receiving messages sent to a destination. It allows a JMS client to register interest in a destination with a JMS provider. The JMS provider manages the delivery of messages from a destination to the registered consumers of the destination. The PTP form of message consumer implements the  QueueReceiver  interface. The pub/sub form implements the  TopicSubscriber  interface.","consumer"
+"JBoss AS has used different JMS implementations across its releases. Since JBoss AS 6.0, the default JMS provider is ________, which provides a multiprotocol, embeddable, very high performance and clusterable messaging system.","HornetQ"
+"Y/N - It's possible to use the messaging subsystem by using the default standalone server.","N"
+"Y/N - In order to use the messaging subsystem you have to start JBoss AS using a full profile, which includes the messaging subsystem.","Y"
+"Is it a local connection or remoting using NIO?   @Stateless public class SampleEJB {  @Resource(mappedName = ""java:/ConnectionFactory"")  private ConnectionFactory cf; }","local"
+"_____-_____ beans (MDBs) are stateless, server-side, and transaction-aware components for processing asynchronous JMS messages.","Message-Driven"
+"One of the most important aspects of message-driven beans is that they can consume and process messages ____________.","concurrently"
+"Y/N - The MDB containers manage concurrency automatically, so the bean developer can focus on the business logic of processing the messages.","Y"
+"The component interfaces are absent because the message-driven bean is not accessible via the Java ___ API; it responds only to asynchronous messages.","RMI"
+"Y/N - The MDB instance's life cycle has two states: Does Not Exist and Method ready Pool","Y"
+"Y/N - The MDB instance's life cycle has three states: Does Not Exist, Instantiating and Method ready Pool","N"
+"Y/N - There is no guarantee the same MDB instance will be used for each message or that the messages will be processed in the same order the client sent them.","Y"
+"Y/N - There is no guarantee the same MDB instance will be used for each message but the messages will be processed in the same order the client sent them.","N"
+"If no bean instances are available, the request will be ______ until an active MDB completes a method call or the transaction times out.","blocked"
+"In JBoss AS 7 it's possible to configure the bean pool for ____ and ___ types of beans by using the management tool.","SLSB,MDB"
+"What is the default capacity of MDB beans (mdb-strict-max-pool)?","20"
+"What is the default capacity of SLSB beans (slsb-strict-max-pool)?","20"
+"What is the annotation for MDB?","@MessageDriven"
+"Producer:   @________(mappedName = ""java:/ConnectionFactory"") private ConnectionFactory cf; @Resource(mappedName = ""java:jboss/jms/queue/ticketQueue"") private Queue queueExample;","Resource"
+"Consumer:    @__________ (name = 'MDBService', activationConfig = { @ActivationConfigProperty(propertyName = 'destinationType', propertyValue = 'javax.jms.Queue'), @ActivationConfigProperty(propertyName = 'destination', propertyValue = 'java:jboss/jms/queue/ticketQueue'), @ActivationConfigProperty(propertyName = 'acknowledgeMode', propertyValue = 'Auto-acknowledge') }) [1] public class MDBService implements MessageListener {","MessageDriven"
+"_______ session = connection.createSession(false,Session.AUTO_ ACKNOWLEDGE);","Session"
+"Although we are using an In-VM connection factory, JMS objects such as connections and sessions are pretty heavyweight objects. Therefore, a common practice for developers is to _____ these objects to avoid costly object creation every time.","cache"
+"When using the _______ connection factory (JNDI='java:/JmsXA'), you will be able to leverage the outbound adapter of the HornetQ JCA Resource Adapter. This in turn translates in providing a caching layer for your connection and session objects, which will be acquired from the pool.","pooled"
+"Which one is the best approach for creating a connection factory?   1)@Resource(mappedName = ""java:/ConnectionFactory"") private ConnectionFactory cf;   2)@Resource(mappedName = ""java:/JmsXA"") private ConnectionFactory cf;","2"
+"@ActivationConfigProperty(propertyName = 'message________', propertyValue = 'priority = 'HIGH''),","Selector"
+"Message _________ allow an MDB to be more selective about the messages it receives from a particular topic or queue.","selectors"
+"If you are planning to connect different business partners (for example, Java and .NET applications), or you are simply building a new system from scratch with no clear interactions defined, it would be better to use ___ _______ for transport and connection.","web services"
+"Remember that if you are using ___ as the driver, you are bound to Java-to-Java interaction","JMS"
+"connection =  cf.createConnection(); 
+
+  Session session =  connection._____________ (false, Session.AUTO_ACKNOWLEDGE);
+
+  MessageProducer publisher = null;
+
+  publisher =  _______.createProducer (queueExample);
+
+   connection.start(); 
+
+  TextMessage message =  session.createTextMessage (txt);
+
+  message.setStringProperty(""priority"", priority);
+
+   publisher.send(message);","createSession,session"
+"https://s3.amazonaws.com/classconnection/923/flashcards/7178923/png/ptp-14BD0AEE86B42257728.png","point-to-point"
+"https://s3.amazonaws.com/classconnection/923/flashcards/7178923/png/pubsub-14BD0AF3C0E3FBA17D0.png","publish/subscribe"

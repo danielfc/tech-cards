@@ -1,0 +1,20 @@
+"A ______ of application servers consists of multiple server instances (nodes) running simultaneously and working together to provide increased scalability and reliability.","cluster"
+"Adding a new node to a cluster should allow the overall system to service a higher client load than that provided by the simple basic configuration.","scalability"
+"In a clustered environment, the individual nodes composing the cluster should each process a fair share of the overall client load.","load balancing"
+"Applications running in a cluster can continue when a server instance fails.","high availability"
+"The backbone of JBoss clustering is the _______ library, which provides communication between members of the cluster using a multicast transmission.","jgroups"
+"It handles the consistency of your application across the cluster by means of a replicated and transactional JSR-107-compatible cache","infinispan"
+"What are the two available node for JBoss Clustering?","standalone, domain"
+"Y/N - The file standalone-full-ha.xml also includes the messaging subsystem.","Y"
+"Y/N - Is the code below correct to run a cluster on the same machine?
+<i>./standalone.sh -c standalone-ha.xml -b 192.168.1.1
+./standalone.sh -c standalone-ha.xml -b 192.168.1.2</i>","N"
+"Y/N - Is the code below correct to run a cluster on the same machine?
+<i>
+./standalone.sh -c standalone-ha.xml -Djboss.node.name=node1
+./standalone.sh -c standalone-ha.xml -Djboss.node.name=node2 -Djboss.socket.binding.port-offset=200
+</i>","Y"
+"In order to trigger clustering libraries in your application, you can follow two approaches: 
+<i>a JBoss proprietary annotation,(@org.jboss.ejb3.annotation. __________), or via the EJB configuration file (jboss-ejb3.xml) you can use the portable <____________ /> element in your web.xml file</i>","clustered,distributable"
+"You can apply the @Clustered annotation on your _______ EJB, enabling load balancing over the cluster nodes for a remote client.","stateless"
+"Marking a _______ EJB @Clustered, in addition to load balancing, the replication of session data between the cluster nodes.","statefull"

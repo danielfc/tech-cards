@@ -1,0 +1,50 @@
+"If you want to test enterprise features such as EJB and the Java Transaction API (JTA), you need to include the org.jboss.arquillian.junit.________________ dependency","arquillian-junit-container"
+"A maven ______ can basically be used to create different target environments for our goals.","profile"
+"<b>@_______(Arquillian.class)</b>
+public class TicketTest {
+}","RunWith"
+"Arquillian then looks for a static method with the @_________ annotation; it creates a micro deployment, including all the resources, just as you would when packaging your applications with your favorite tool","Deployment"
+"@________
+public static Archive<?> createTestArchive() {
+return _________.create(WebArchive.class, 'ticket-agency-test.
+war')
+.addPackage(SeatProducer.class.getPackage())
+.addPackage(Seat.class.getPackage())
+.addPackage(TicketService.class.getPackage())
+.addPackage(DataManager.class.getPackage())
+.addAsResource('META-INF/persistence.xml')
+.addAsWebInfResource(EmptyAsset.INSTANCE, 'beans.xml');
+}","Deployment,ShrinkWrap"
+"We will just need to add an Arquillian configuration file named __________ into our project, under <i>src/test/resources</i>","arquillian.xml"
+"<pre><?xml version='1.0' encoding='UTF-8'?>
+<arquillian xmlns='http://jboss.org/schema/arquillian'
+xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+xsi:schemaLocation='http://jboss.org/schema/arquillian
+http://jboss.org/schema/arquillian/arquillian_1_0.xsd'>
+<b><defaultProtocol type='Servlet 3.0' /></b>
+<container qualifier='jboss' default='true'>
+<configuration>
+<property name='managementAddress'>localhost</property>
+<property name='managementPort'>9999</property>
+</configuration>
+</container>
+</arquillian></pre>","arquillian.xml"
+"Y/N - In the <i>arquillian.xml</i> file you need to specify the JBoss AS location in order to run a managed container.
+
+
+<container qualifier='jboss' default='true'>
+<configuration>
+<b><property name='jbossHome'>C:\jboss-as-7.1.1.Final</property></b>
+</configuration>
+</container>","Y"
+"Y/N - When testing conversation scoped beans, you need to inject the following object:
+
+
+@Inject BoundConversationContext conversationContext;
+
+@Before
+public void init() {
+conversationContext.associate(new MutableBoundRequest(new HashMap<String, Object>(),
+			      new HashMap<String, Object>()));
+<b>conversationContext.activate();</b>
+}","Y"

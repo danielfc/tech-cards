@@ -1,0 +1,7 @@
+"_____ is an automation platform that transforms infrastructure into code.","Chef"
+"This is a configuration management software. Most of them use the same paradigm: they allow you to define the state you want a machine to be, with regards to configuration files, software installed, users, groups and many other resource types. Most of them also provide functionality to push changes onto specific machines, a process usually called <b>orchestration</b>.","Chef"
+"Create and configure lightweight, reproducible, and portable development environments.","Vagrant"
+"It provides a reproducible way to generate fully virtualized machines using either Oracle's VirtualBox or VMWare technology as providers. It can coordinate with a configuration management software to continue the process of installation where the operating system's installer finishes. This is known as <b>provisioning</>.","Vagrant"
+"An open source project to pack, ship and run any application as a lightweight container","Docker"
+"The functionality of this software somewhat overlaps with that of Vagrant, in which it provides the means to define operating systems installations, but greatly differs in the technology used for this purpose. It uses <b>Linux containers</b>, which are not virtual machines per se, but isolated processes running in isolated filesystems. It can also use a configuration management system to provision the containers.","Docker"
+"Open source software for building private and public clouds.","OpenStack"

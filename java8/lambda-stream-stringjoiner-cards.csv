@@ -1,0 +1,54 @@
+"_______ expressions are anonymous functions","Lambda"
+"What new feature of the Java SE 8 the following code is using:
+
+Runnable r = () -> System.out.println('Hello!');
+new Thread(r).start();
+","Lambda"
+"A _______ ________ has a single abstract method.","functional interface"
+"Prior to Jaa SE 8, functional interfaces such as Runnable, Callable, Comparator and TimerTask were known as ______ _______ _______ (SAM) Types","Single Abstract Method"
+"Y/N - In a Lambda expression, when there are parameters, the type of them is required.","N"
+"Y/N - A Functional Interface can have multiple method declarations.","N"
+"Y/N - In a Lambda expression, never declare the type of a parameter. The types are already known by the functional interface.","Y"
+"Which annotation is optional when creating a functional interface?","@FunctionalInterface"
+"Y/N - Is the code valid?
+
+list.sort((str1, str2) -> {
+	return str1.compareToIgnoreCase(str2);
+});","Y"
+"Y/N - Is the code valid?
+	
+Runnable r1 = () -> System.out.println("Hello thread!");
+new Thread(r1).run();","Y"
+"Y/N - Parentesis in a lambda expresion is always mandatory.","N"
+"Y/N - Parentesis in a lambda expresion is mandatory with more than 1 parameters.","Y"
+"Y/N - It's possible to use the return keyword without curly braces.","N"
+"Y/N - It's possible to omit the return keyword when not using the curly braces.","Y"
+"In which package there are many new functional interfaces?","java.util.function"
+"What is the interface's name to filter collections?","Predicate"
+"Which method should you use to traverse a List<String>?","forEarch"
+"Type an example of the usage of the forEach method in a List<String> named list.","list.forEach(str -> System.out.println(str))"
+"_______ ______ is a new syntax to use in Java SE 8 for the following examples:
+<pre>
+list.sort(Person :: compareAges);
+list.sort(this :: compareAges);","method reference"
+"list.sort(Person :: compareAges);","static method reference"
+"list.sort(this :: compareAges);</pre>","instance method reference"
+"Y/N - In Java SE 8 is possible to implement a method in an interface.","Y"
+"In Java SE 8, which keyword is used to implement a method in an interface.","default"
+"______ and ______ methods are two ways of implementing a method in an interface","default, static"
+"What are the 2 types of streams?","Sequential, Parallel"
+"Y/N - This are two ways of using parallel streams from Collections:
+<pre>
+people.parallelStream();
+people.stream().parallel();
+</pre>","Y"
+"How to transform an array of Person(people) in a <b>Stream</b> object using the Stream class?","Stream.of(people);"
+"How to transform an array of Person(people) in a <b>Stream</b> object using the Arrays class?","Arrays.stream(people);"
+"Y/N - If you want to access the items of a Collection, parallelStream is the best way to go.","N"
+"<pre>int sum = people.______().map____(p -> p.getAge()).____()</pre>","stream,toInt,sum"
+"<pre>______Double avg = people.______().map____(p -> p.getAge()).________()</pre>","Optional,stream,toInt,average"
+"When using an <b>Optional</b> object, the method ________() return a boolean indicating if there is a value.","isPresent"
+"Which object should be used when a value might not be calculated correctly?","Optional"
+"Y/N - It's possible to join strings in arrays and collections using the <b>StringJoiner</b> class.","Y"
+"There is a new static method in the <b>String</b> class that allows joining strings that is called String._______(<i>delimiter</i>,<i>strings</i>)","join"
+"When reading a file, which method allow the lines to be used as Stream<String>? _____._____(<i>path</i>)","Files,lines"

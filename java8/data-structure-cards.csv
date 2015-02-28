@@ -1,0 +1,36 @@
+"What interface corresponds to a Double Ended Queue?","Deque"
+"What interface can be used as FIFO and LIFO?","Deque"
+"Which interface should be used in proference to the legacy Stack class?","Deque"
+"Y/N - Unlike the List interface, the Queue interface does not provide support for indexed access to elements.","Y"
+"Y/N - The LinkedList class directly implements Deque interface.","Y"
+"Y/N - The LinkedList class directly implements Queue interface.","N"
+"Stores the elements ordered and with no repetition.","TreeSet"
+"Hash data structure with no repetition","HashSet"
+"This implementation provides guaranteed log(n) time cost for the basic operations (add, remove and contains)","TreeSet"
+"This class offers constant time performance for the basic operations (add, remove, contains and size), assuming the hash function disperses the elements properly among the buckets.","HashSet"
+"Like HashSet, it provides constant-time performance for the basic operations (add, contains and remove), assuming the hash function disperses elements properly among the buckets.","LinkedHashSet"
+"The size, isEmpty, get, set, iterator, and listIterator operations run in constant time. The add operation runs in amortized constant time, that is, adding n elements requires O(n) time. All of the other operations run in linear time (roughly speaking).","ArrayList"
+"Y/N - A priority queue does not permit null elements.","Y"
+"This implementation provides O(log(n)) time for the enqueing and dequeing methods (offer, poll, remove() and add); linear time for the remove(Object) and contains(Object) methods; and constant time for the retrieval methods (peek, element, and size).","PriorityQueue"
+"Which data structure is best suitable for a phone number book?","TreeMap"
+"What is the best Set when you don't care about ordering?","HashSet"
+"What is the best Set when you do care about ordering?","TreeSet"
+"What is the best Set when you do care about the order in which elements were inserted?","LinkedHashSet"
+"What is the best Map when you do care about the order in which elements were inserted?","LinkedHashMap"
+"A Map that cannot guarantee the order of items in the collection.","HashMap"
+"A Set that cannot guarantee the order of items in the collection.","HashSet"
+"Y/N - Hashtable does not allow null keys or values.","Y"
+"Y/N - HashMap allows one null key and any number of null values.","Y"
+"Y/N - Hashtable is synchronized, whereas HashMap is not.","Y"
+"Y/N - HashMap is synchronized, whereas Hashtable is not.","N"
+"1. Display the data part of root element (or current element)
+2. Traverse the left subtree by recursively calling the pre-order function.
+3. Traverse the right subtree by recursively calling the pre-order function.","pre-order"
+"1. Traverse the left subtree by recursively calling the in-order function.
+2. Display the data part of root element (or current element).
+3. Traverse the right subtree by recursively calling the in-order function.","in-order"
+"1. Traverse the left subtree by recursively calling the post-order function.
+2. Traverse the right subtree by recursively calling the post-order function.
+3. Display the data part of root element (or current element).","post-order"
+"What type of tree does the TreeSet, TreeMap implement?","red-black tree"
+"This tree implementation provides guaranteed log(n) time cost for the containsKey, get, put and remove operations.","red-black tree"
