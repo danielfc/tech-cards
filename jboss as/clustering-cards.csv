@@ -6,16 +6,55 @@
 "It handles the consistency of your application across the cluster by means of a replicated and transactional JSR-107-compatible cache","infinispan"
 "What are the two available node for JBoss Clustering?","standalone, domain"
 "Y/N - The file standalone-full-ha.xml also includes the messaging subsystem.","Y"
-"Y/N - Is the code below correct to run a cluster on the same machine?
-<i>./standalone.sh -c standalone-ha.xml -b 192.168.1.1
-./standalone.sh -c standalone-ha.xml -b 192.168.1.2</i>","N"
-"Y/N - Is the code below correct to run a cluster on the same machine?
-<i>
-./standalone.sh -c standalone-ha.xml -Djboss.node.name=node1
-./standalone.sh -c standalone-ha.xml -Djboss.node.name=node2 -Djboss.socket.binding.port-offset=200
-</i>","Y"
-"In order to trigger clustering libraries in your application, you can follow two approaches: 
-<i>a JBoss proprietary annotation,(@org.jboss.ejb3.annotation. __________), or via the EJB configuration file (jboss-ejb3.xml) you can use the portable <____________ /> element in your web.xml file</i>","clustered,distributable"
+"Y/N - Is the code below correct to run a cluster on the same machine? <i>./standalone.sh -c standalone-ha.xml -b 192.168.1.1 ./standalone.sh -c standalone-ha.xml -b 192.168.1.2</i>","N"
+"Y/N - Is the code below correct to run a cluster on the same machine? <i> ./standalone.sh -c standalone-ha.xml -Djboss.node.name=node1 ./standalone.sh -c standalone-ha.xml -Djboss.node.name=node2 -Djboss.socket.binding.port-offset=200 </i>","Y"
+"In order to trigger clustering libraries in your application, you can follow two approaches:  <i>a JBoss proprietary annotation,(@org.jboss.ejb3.annotation. __________), or via the EJB configuration file (jboss-ejb3.xml) you can use the portable  element in your web.xml file</i>","clustered,distributable"
 "You can apply the @Clustered annotation on your _______ EJB, enabling load balancing over the cluster nodes for a remote client.","stateless"
-"Marking a _______ EJB @Clustered, in addition to load balancing, the replication of session data between the cluster nodes.","statefull"
-"If you prefer to keep your code "neutral" from this point of view, you can use the clustered element into the ________.xml file","jboss-ejb3"
+"Marking a _______ EJB @Clustered, in addition to load balancing, the replication of session data between the cluster nodes.","stateful"
+"If you prefer to keep your code ""neutral"" from this point of view, you can use the clustered element into the ________.xml file","jboss-ejb3"
+"https://s3.amazonaws.com/classconnection/923/flashcards/7178923/png/clustering-14BD5A111871C9C20C3.png","clustering"
+"This profile has the support of Java EE Web Profile and some extensions, such as RESTful web services or support for EJB 3 remote invocations.","default"
+"This profile supports all the default subsystems contained in the default profile and the messaging subsystem.","full"
+"This profile corresponds to the default profile with clustering capabilities.","ha"
+"This is the full profile with clustering capabilities.","full-ha"
+"The state of the @________ and @_________ EJBs are replicated across the cluster nodes so that if one of the nodes in the cluster goes down, some other node will be able to take over the invocations.","Stateful,Clustered"
+"After a successful lookup of an SFSB via JNDI, a _____ is returned to the client for subsequent method invocations.","proxy"
+"While this session creation request is going on, <b>NodeA</b> will also send back an asynchronous message that contains the cluster __________.","topology"
+"After the first connection, the JBoss EJB client implementation will be aware of the cluster topology; therefore, it knows that the cluster has two nodes: NodeA and NodeB. When the invocation now arrives, it detects that the NodeA is down; so it uses a _______ to fetch a suitable node from among the cluster nodes.","selector"
+"Y/N - There are 3 ways of using a Singleton in a clustered environment:
+- Use a JBoss proprietary solution that is deploying a clustered version of SingletonService, which exposes an HA-singleton of org.jboss.msc.service.Service.
+- Move the data of the Singleton to a persistence storage through JPA.
+- Use a distributed data cache such as Infinispan.","Y"
+"____________ is a distributed data grid platform that exposes a JSR-107-compatible cache interface in which you can store data and enhance it by providing additional APIs and features (such as transactional cache, data eviction and expiration, asynchronous operations on the cache, and more).","Infinispan"
+"Its primary interface is javax.cache._____, which is similar to the Java SE java.util.___________, with some modifications for distributed environments.","Cache,ConcurrentMap"
+"javax.cache.Cache adds the ability to register, deregister, and list event listeners, and it defines a _________ interface for loading/storing cached data.","CacheLoader"
+"Cache instances can be retrieved using an appropriate _________, which represents a collection of caches.","CacheManager"
+"@Resource annotation bears a lookup attribute, which is <b>not included</b> in the default JDK implementation of the @javax.annotation.Resource annotation. In order to solve this issue and avoid a compilation problem, you need to copy the JAR file jboss-annotations-api_1.X_spec-1.X.X.Final.jar (contained in JBOSS_HOME/modules/javax/annotation/api/main) into JAVA_HOME/jre/lib/_________ of your JDK distribution.","endorsed"
+"Y/N - Web application clustering involves two aspects: setting up an HTTP load balancer, and telling JBoss to make the application's user sessions HA.","Y"
+"
+JBoss AS software load balancing solutions:
+
+- Use Apache Tomcat's ______ to route your requests to your nodes.
+- Use Apache _______ that configures Apache to act as a proxy server and forwards requests to JBoss AS nodes.
+- Use JBoss' built-in solution _________ to achieve dynamic load balancing of your requests.","mod_jk,mod_proxy,mod_cluster"
+"The advantage of using
+__________ against other options can be summarized in the following key points:
+
+• Dynamic clustering configuration
+• Server-side pluggable load metrics
+• Lifecycle notifications of the application status","mod_cluster"
+"When using a standard load balancer such as _______, you have to provide a static list of nodes that are used to spread the load. This is a very limiting factor, especially if you have to deliver upgrades to your configuration by adding or removing nodes or you simply need to upgrade releases used by single nodes. Besides this, using a flat cluster configuration can be tedious and prone to errors, especially if the number of cluster nodes is high.","mod_jk"
+"When using __________, you can dynamically add or remove nodes to your cluster, because cluster nodes are discovered through an advertising mechanism.","mod_cluster"
+"In which file the JBoss nodes are staticaly configured when using mod_jk load balancing?","workers.properties"
+"What is the problem with flat large clusters? It's not scalable, the replication goes to each node. It's better to use an approach with domains to divide and conquer. In domain clusters, the replication is domain-specific. The downside is that if the domain runs out of nodes, the data session is lost.","Y"
+"Y/N - Using <b>mod_jk</b>, when a worker(node) is added or removed, we need to modify workers.properties or uriworkermap.properties on all httpd servers.","Y"
+"Y/N - Using <b>mod_jk</b>, when a worker(node) is added or removed, the files workers.properties or uriworkermap.properties are automatically updated on all httpd servers.","N"
+"Y/N - Using <b>mod_cluster</b>, workers register themselves with httpd server(s). No more <i>workers.properties</i>.","Y"
+"Y/N - Using <b>mod_jk</b>, workers register themselves with httpd server(s). No more <i>workers.properties</i>.","N"
+"Y/N - Using <b>mod_cluster</b>, changes in cluster topology are sent to the httpd server(s).","Y"
+"Y/N - Using <b>mod_jk</b>, changes in cluster topology are sent to the httpd server(s).","N"
+"Y/N - Using <b>mod_cluster</b>, deployed and undeployed webapps are automatically registered and un-registered with httpd. No more uriworkermap.properties","Y"
+"Y/N - Using <b>mod_cluster</b>, workers (nodes) send their load factors to httpd, so httpd can forward requests based on actual load.","Y"
+"In order to support in-memory replication of HTTP session states, all servlets and JSP session data must be ___________.","serializable"
+"If you set attributes in a session object with setAttribute, by default the object and its attributes are replicated using the _________ API.","Infinispan"
+"Since the mod_cluster subsystem is configured by default to use ______ web sessions, all subsequent requests from the same client will be redirected to the same server node.","sticky"

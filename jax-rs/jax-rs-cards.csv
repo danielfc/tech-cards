@@ -1,0 +1,24 @@
+"@____, is used to specify the URI that is assigned to this web service.","Path"
+"JBoss AS 7 includes an out-of-the-box _______ library that is a portable implementation of the JSR-311 specification.","RESTEasy"
+"RESTEasy is bundled with JBoss AS 7, so you need very little effort to get started. At first, you must at least provide an empty ________ file","web.xml"
+"Once you have completed the web.xml file, you just need to activate the JAX-RS resources by declaring the application path used by your REST service, using the @________________ annotation in a class that extends javax.ws.rs.core.Application","ApplicationPath"
+"<b>___________ cr = new __________("http://localhost:8080/ticketagency-ws/rest/seat");</b>
+String result = cr.get(String.class).getEntity();
+System.out.println(result);","ClientRequest"
+"If you have lots of URIs to consume, you can use the ___________________ class to encapsulate your URIs.","ClientRequestFactory"
+"Y/N - ClientRequestFactory crf = <b>new ClientRequestFactory(UriBuilder.fromUri('http://localhost:8080/ticket-agencyws/rest/seat').build());</b>
+ClientRequest bookRequest = crf.createRelativeRequest("/4");
+String entity=null;
+try {
+entity = bookRequest.post(String.class).getEntity();","Y"
+"Y/N - ClientRequest crf = <b>new ClientRequest(UriBuilder.fromUri('http://localhost:8080/ticket-agencyws/rest/seat').build());</b>
+ClientRequest bookRequest = crf.createRelativeRequest("/4");
+String entity=null;
+try {
+entity = bookRequest.post(String.class).getResult();","N"
+"Digits only:
+
+
+@Path("/{id:____}")","\\d+"
+"So if your requirement is to consume business services that are exposed using a well-defined and negotiated contract (between the service consumer and the service provider), ____ web services are a perfect match.","SOAP"
+"If you need to access some server resources using stateless HTTP invocations and as little as the navigation bar of your browser, you should probably go with _______ web services.","RESTful"
