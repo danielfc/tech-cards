@@ -106,3 +106,12 @@ private EntityManager entityManager;","Y"
  @_________ 
 
  public  @interface   BusinessComponent  {}","Stereotype"
+"@AroundInvoke  
+
+   public Object audit(_________ context) throws Exception { 
+
+                logger.info(""[AUDITOR] Auditing the                         method: ""+context.getMethod()); 
+
+                  return context.__________();  
+
+   }","InvocationContext,proceed"
