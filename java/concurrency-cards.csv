@@ -1,0 +1,230 @@
+"___________ is the ability of a program to execute several computations  simultaneously . This can be achieved by distributing the computations over the  available CPU cores  of a machine or even over different machines within the same network.","Concurrency"
+"_________ in contrast, are  processes  that live  within a process  and share their resources (memory, open files, etc.) with the other threads of the process.","Threads"
+"Each program has  at least one  thread: the ____ thread.","main"
+"public class MainThread { 
+
+     public static void main(String[] args) { 
+
+         long id =                                   Thread.______________().getId();  
+
+     }","currentThread"
+"A  thread  that has  not yet   started  is in this state.","NEW"
+"A  thread executing  in the Java virtual machine is in this state.","RUNNABLE"
+"A thread that is  blocked  waiting for a  monitor   lock  is in this state.","BLOCKED"
+"A thread that is  waiting   indefinitely for another thread  to perform a particular action is in this state.","WAITING"
+"A thread that is  waiting for another thread  to perform an action for up to a  specified waiting time  is in this state.","TIMED_WAITING"
+"A  thread  that has  exited  is in this state.","TERMINATED"
+"Each  thread  belongs to a  group  of threads. The JDK class java.lang.__________ provides some methods  to handle a whole group of Threads.  With these methods we can for example  interrupt all threads  of a group or  set their maximum priority .","ThreadGroup"
+"Basically there are  two  ways to create a thread in Java. The  first  one is to write a class that  extends  the JDK class java.lang.________. The  second  way to create a thread is a class that  implements  the interface __________.","Thread,  Runnable"
+"Once we have started a  Thread , it runs until the  ___()   method  reaches it end.","run"
+"public void  run()   {  
+
+      while(true) {  
+
+         doSomethingUseful(); 
+
+         try { 
+
+              Thread._____(1000);  
+
+         } catch (InterruptedException e) { 
+
+             e.printStackTrace(); 
+
+         } 
+
+      }  
+
+  }","sleep"
+"Thread.____(1000); 
+
+ 
+ 
+This means the  current thread removes itself  from the list of active threads and the  scheduler  doesn’t schedule it for the next execution until the  second (given in milliseconds)  has passed.","sleep"
+"The  receiving thread  can explicitly ask if it  has been interrupted  by calling the method  Thread._____________()  or it is implicitly interrupted while spending his time within a method like  _____()  that throws an exception in case of an interrupt.","interrupted,sleep"
+"Starting the Thread: 
+
+ 
+ 
+
+ Thread myThread = new Thread( new InterruptExample() , ""myThread""); 
+
+  myThread._____();","start"
+"Interrupting a Thread: 
+
+
+
+  myThread._______();","interrupt"
+"The ability of a thread to wait for the termination of another thread.","join"
+"With ____________ you can create  blocks of statements  which can only be accessed by  a thread,  which  gets the lock  on the resource.","synchronized"
+"public void  run()  { 
+
+     while (counter  
+
+         ______________  (SynchronizedCounter.class) {  
+
+                  //synchronized block  
+
+          }  
+
+     } 
+
+ }","synchronized"
+"Synchronized block for the instance variable  sync  on entire method: 
+
+ public class LocalSync { 
+
+     private Integer sync = 0; 
+
+ 
+
+     public void someMethod() { 
+
+         ______________  (sync) {  
+
+              // synchronized on instance level  
+
+          }  
+
+     } 
+
+ }","synchronized"
+"Synchronizing the entire method: 
+
+ 
+ 
+
+ public class MethodSync { 
+
+     private Integer sync = 0; 
+
+ 
+
+      public ____________ void someMethod() {  
+
+          // synchronized on instance level  
+
+      }  
+
+ }","synchronized"
+"Most often you will have to synchronize access to some resource that only  exists once per JVM . The common means to do that is to use _______ member variable of a class.","static"
+"Y/N - By using synchronized resources may lead to performance issues.","Y"
+"Y/N - Concurrency problems are  not always visible  at first glance, but they need some testing under  heavy-load conditions  in order to appear.","Y"
+"An  operation  during which a processor can  simultaneously read a location and write  it in the same bus operation. This  prevents any other processor or I/O device from writing or reading memory until the operation is complete .  ________  operation implies indivisibility and irreducibility, so it  must be performed entirely or not performed at all.","Atomic"
+"Y/N - Atomic operation:  
+
+  
+  
+
+ public static void readConfig() { 
+
+          Map  newConfig = new HashMap ();  
+
+         Date now = new Date(); 
+
+         newConfig.put(""key-1"", sdf.format(now)); 
+
+         newConfig.put(""key-2"", sdf.format(now)); 
+
+          configuration = newConfig;  
+
+     }","Y"
+"Y/N - Atomic operation:   
+
+ private   static   Map  configuration = new   HashMap (); 
+  
+
+ 
+ 
+
+ public static void readConfig() { 
+
+         Date now = new Date(); 
+
+             configuration   .put(""key-1"", sdf.format(now));  
+
+             configuration   .put(""key-2"", sdf.format(now));  
+
+ }","N"
+"Which implementation of  map  handle  concurrent  access in an  atomic   process ?","ConcurrentHashMap"
+"Essentially, _________   is used to indicate that a   variable's value will be modified by different threads  .","volatile"
+"By declaring the shared  counter  variable as _________ the JVM guarantees that  every read  of the variable will always  be read from main memory , and that  all writes  to the variable will always  be written back to main memory .","volatile"
+"If most of the time threads with a  high priority  are executed, the threads with  lower priority  seem to  “starve”  as they get not enough time to execute their work properly. Therefore it is recommended to set the __________ of a thread  only if there are strong reasons for it.","priority"
+"____ locks take the  waiting time  of the threads into account, when choosing the next thread to pass. An example implementation of this type of lock is provided by the Java SDK:   java.util.concurrent.locks.ReentrantLock.","Fair"
+"The ____() method that every object inherits from the   java.lang.Object   class can be used to  pause  the  current thread  execution and wait until another threads wakes us up using the   notify()   method.","wait"
+"synchronized (queue) {  
+
+           try { 
+
+                //cause the current thread to pause 
+
+                 queue.____();  
+
+           } catch (InterruptedException e) { 
+
+                 e.printStackTrace(); 
+
+           } 
+
+   }","wait"
+"In order to avoid  conditions , you will have to execute  all operations  that depend on the  monitor’s state  in the same ______________ block:
+
+ 
+ 
+
+  synchronized (queue) {  
+
+         try {   while (queue.isEmpty()) { 
+
+                  queue.wait();  
+
+             }   } catch (InterruptedException e) {           e.printStackTrace(); } 
+
+          retVal = queue.poll();    }","synchronized"
+"Return a map that cannot be modified: 
+
+
+
+
+ public Map  getHeaders() { 
+
+         return  Collections._______________(this.header);  
+
+     }","unmodifiableMap"
+"Dedicated memory  that is only used by our  own  thread and not by other threads is provided in Java through the java.lang.________ class.","ThreadLocal"
+"ThreadLocal’s  internal implementation makes sure that every time you call ___() the given value is stored within a memory region that  only the current thread has access to.","set"
+"A different approach called __________ locking, assumes that  there are not so many threads competing  for the resource and hence we just  try to update  the value and  see if this has worked .","optimistic"
+"In which class is the following code present?
+
+public final int getAndIncrement() {
+
+   
+
+ 
+ 
+
+ for (;;) { 
+
+             int current = get(); 
+
+             int next = current + 1; 
+
+             if ( compareAndSet (current, next)) 
+
+                 return current; 
+
+         } 
+
+     }","AtomicInteger"
+"Under the hood the _______________ maintains a  pool  (LinkedBlockingQueue) of threads and dispatches the instances of Runnable given the execute() method to the pool.","ThreadPoolExecutor"
+"Finally the _________() method lets the   ThreadPoolExecutor    reject all  further tasks and  waits  until the already issued tasks  have been executed.","shutdown"
+"The Callable interface is similar to Runnable, in that both are designed for classes whose instances are potentially executed by another thread.   A __________, however, does not return a result and cannot throw a checked exception.","Runnable"
+"Instead of using only  one lock for the whole table  the _______________________ subdivides the whole table into many  small partitions . Each partition has  its own lock . Hence write operations to this map from different threads, assuming they are writing at different partitions of the table, do not compete and can use their own lock.","ConcurrentHashMap"
+"Which class?
+
+
+
+  void acquire();  
+
+  void release();","Semaphore"
+"Similar to the Semaphore class it provides a counter, but the counter of the  ____________  Latch  can only be  decreased until it reaches zero . Once the counter has  reached zero  all threads waiting on it  can proceed .","CountDown"
