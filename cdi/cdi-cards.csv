@@ -21,7 +21,7 @@
 "A way to properly clean up the EntityManagers at the end of each request by using the annotation @_________.","Disposes"
 "For implementing interception in CDI, we need to provide two parts. The first one is obviously the annotation itself. It is meta-annotated as @_________________ which marks it as an annotation that is intended to be used for interceptors","InterceptorBinding"
 "The second part is the interceptor implementation itself. This  class  must be annotated as @__________ and additionally with its intended interceptor binding. The interceptor functionality itself is implemented in a  method  which gets annotated as @_______________. The third part is to declared in the beans.xml file in using the   tag.","Interceptor,AroundInvoke,Interceptors"
-"___________  are used for  general tasks , which are not related with your class in particular (e.g. auditing). On the other hand,  ___________ , do bear with them the Bean attributes/operations so they can actually specialize or override a specific  business functionality.","Decorators,  Interceptors"
+"___________  are used for  general tasks , which are not related with your class in particular (e.g. auditing). On the other hand,  ___________ , do bear with them the Bean attributes/operations so they can actually specialize or override a specific  business functionality.","Interceptors,  Decorators"
 "__________ beans can be used to provide a whole  different bean implementation , while ___________ can be used to further  specialize a single method/attribute  and they allow as well interacting with the method/attribute we are going to specialize.","Alternative,D  ecorators"
 "@ _________ 
  public abstract class CoderDecorator implements Coder {  
@@ -86,7 +86,7 @@ private EntityManager entityManager;","Y"
 "CDI Decorators: 
  
  
- First : Create a new class, can be an abstract one using the @__________ annotation and implementing the interface.  Second : Inject the original object by using @Inject, any qualifier and the @________ annotation.  Third : Declare in the beans.xml file using the   tag.","Decorate,Delegate,decorators"
+ First : Create a new class, can be an abstract one using the @__________ annotation and implementing the interface.  Second : Inject the original object by using @Inject, any qualifier and the @________ annotation.  Third : Declare in the beans.xml file using the   tag.","Decorator,Delegate,decorators"
 "CDI Alternativies:  
  
  
@@ -114,4 +114,4 @@ private EntityManager entityManager;","Y"
 
                   return context.__________();  
 
-   }","InvocationContext,proceed"
+   }","InvocationContext,   proceed"
